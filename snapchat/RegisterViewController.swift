@@ -47,6 +47,7 @@ class RegisterViewController: UIViewController {
                 if error !=  nil {
                     Alert.alert("Error", (error?.localizedDescription)!, in: self)
                 }else{
+                    self.performSegue(withIdentifier: "moveToSnap", sender: nil)
                     print("sign up successfuly")
                 }
             })
@@ -55,6 +56,7 @@ class RegisterViewController: UIViewController {
                 if error != nil {
                     Alert.alert("Error", (error?.localizedDescription)!, in: self)
                 }else {
+                    self.performSegue(withIdentifier: "moveToSnap", sender: nil)
                     print("log in done")
                 }
             })

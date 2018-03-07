@@ -15,6 +15,7 @@
 		8B413CA5204F28CC00A523FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B413CA4204F28CB00A523FD /* GoogleService-Info.plist */; };
 		8B8EB2022050475C00B306F0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB2012050475C00B306F0 /* Alert.swift */; };
 		8B8EB20420504AA900B306F0 /* SnapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB20320504AA900B306F0 /* SnapTableViewController.swift */; };
+		8B8EB20620504DE400B306F0 /* PickPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB20520504DE400B306F0 /* PickPictureViewController.swift */; };
 		C7FBF3BFE9237EFE06A4B5D3 /* Pods_snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4AFD22DF229AB46FE6614BD /* Pods_snapchat.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		8B413CA4204F28CB00A523FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B8EB2012050475C00B306F0 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8B8EB20320504AA900B306F0 /* SnapTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTableViewController.swift; sourceTree = "<group>"; };
+		8B8EB20520504DE400B306F0 /* PickPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPictureViewController.swift; sourceTree = "<group>"; };
 		B4AFD22DF229AB46FE6614BD /* Pods_snapchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snapchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				8B413C92204F284F00A523FD /* AppDelegate.swift */,
 				8B413C94204F284F00A523FD /* RegisterViewController.swift */,
 				8B413C96204F284F00A523FD /* Main.storyboard */,
+				8B8EB20520504DE400B306F0 /* PickPictureViewController.swift */,
 				8B8EB20320504AA900B306F0 /* SnapTableViewController.swift */,
 				8B8EB2012050475C00B306F0 /* Alert.swift */,
 				8B413C99204F284F00A523FD /* Assets.xcassets */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B8EB2022050475C00B306F0 /* Alert.swift in Sources */,
+				8B8EB20620504DE400B306F0 /* PickPictureViewController.swift in Sources */,
 				8B8EB20420504AA900B306F0 /* SnapTableViewController.swift in Sources */,
 				8B413C95204F284F00A523FD /* RegisterViewController.swift in Sources */,
 				8B413C93204F284F00A523FD /* AppDelegate.swift in Sources */,

@@ -16,6 +16,8 @@
 		8B8EB2022050475C00B306F0 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB2012050475C00B306F0 /* Alert.swift */; };
 		8B8EB20420504AA900B306F0 /* SnapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB20320504AA900B306F0 /* SnapTableViewController.swift */; };
 		8B8EB20620504DE400B306F0 /* PickPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB20520504DE400B306F0 /* PickPictureViewController.swift */; };
+		8B8EB208205140D700B306F0 /* ResultSnapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB207205140D700B306F0 /* ResultSnapsTableViewController.swift */; };
+		8B8EB20A205158D700B306F0 /* ShowSnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EB209205158D700B306F0 /* ShowSnapsViewController.swift */; };
 		C7FBF3BFE9237EFE06A4B5D3 /* Pods_snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4AFD22DF229AB46FE6614BD /* Pods_snapchat.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		8B8EB2012050475C00B306F0 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		8B8EB20320504AA900B306F0 /* SnapTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapTableViewController.swift; sourceTree = "<group>"; };
 		8B8EB20520504DE400B306F0 /* PickPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickPictureViewController.swift; sourceTree = "<group>"; };
+		8B8EB207205140D700B306F0 /* ResultSnapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSnapsTableViewController.swift; sourceTree = "<group>"; };
+		8B8EB209205158D700B306F0 /* ShowSnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSnapsViewController.swift; sourceTree = "<group>"; };
 		B4AFD22DF229AB46FE6614BD /* Pods_snapchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snapchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,6 +84,8 @@
 				8B413C92204F284F00A523FD /* AppDelegate.swift */,
 				8B413C94204F284F00A523FD /* RegisterViewController.swift */,
 				8B413C96204F284F00A523FD /* Main.storyboard */,
+				8B8EB209205158D700B306F0 /* ShowSnapsViewController.swift */,
+				8B8EB207205140D700B306F0 /* ResultSnapsTableViewController.swift */,
 				8B8EB20520504DE400B306F0 /* PickPictureViewController.swift */,
 				8B8EB20320504AA900B306F0 /* SnapTableViewController.swift */,
 				8B8EB2012050475C00B306F0 /* Alert.swift */,
@@ -196,12 +202,16 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-snapchat/Pods-snapchat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +248,9 @@
 				8B8EB20620504DE400B306F0 /* PickPictureViewController.swift in Sources */,
 				8B8EB20420504AA900B306F0 /* SnapTableViewController.swift in Sources */,
 				8B413C95204F284F00A523FD /* RegisterViewController.swift in Sources */,
+				8B8EB208205140D700B306F0 /* ResultSnapsTableViewController.swift in Sources */,
 				8B413C93204F284F00A523FD /* AppDelegate.swift in Sources */,
+				8B8EB20A205158D700B306F0 /* ShowSnapsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

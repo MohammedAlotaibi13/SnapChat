@@ -8,17 +8,32 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SnapTableViewController: UITableViewController {
+    
+    var snaps : [DataSnapshot] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let currentUserUid = Auth.auth().currentUser?.uid{
+            Database.database().reference().child("user").child(currentUserUid).child("snaps").observe(.childAdded, with: { (snapShot) in
+                self.snaps.append(snapShot)
+                self.tableView.reloadData()
+                
+                Database.database().reference().child("user").child(currentUserUid).child("snaps").observe(.childRemoved, with: { (snapShot) in
+                    var index = 0
+                    for snap in self.snaps {
+                        if snapShot.key == snap.key {
+                            self.snaps.remove(at: index)
+                        }
+                        index += 1
+                    }
+                    self.tableView.reloadData()
+                })
+            })
+        }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     @IBAction func logOut(_ sender: Any) {
@@ -32,71 +47,37 @@ class SnapTableViewController: UITableViewController {
     }
     
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+ 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return snaps.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+         let snaps = self.snaps[indexPath.row]
+        if let userDictionary = snaps.value as? NSDictionary {
+            if let fromEmail = userDictionary["from"] as? String {
+                cell.textLabel?.text = fromEmail
+            }
+        }
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let snaps = self.snaps[indexPath.row]
+        performSegue(withIdentifier: "showSnaps", sender: snaps)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showSnaps" {
+            if let selectVc = segue.destination as? ShowSnapsViewController {
+                if let snaps = sender as? DataSnapshot {
+                    selectVc.snaps = snaps
+                }
+            }
+        }
     }
-    */
-
 }

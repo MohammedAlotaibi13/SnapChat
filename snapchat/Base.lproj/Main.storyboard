@@ -101,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZM6-iH-EMw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ZM6-iH-EMw">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZM6-iH-EMw" id="aGJ-I0-3at">
@@ -127,10 +127,55 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="t4a-30-nau" kind="show" identifier="showSnaps" id="xEP-DD-EaL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjF-Ql-Xp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1694" y="80"/>
+        </scene>
+        <!--Show Snaps View Controller-->
+        <scene sceneID="f3L-Qz-ypK">
+            <objects>
+                <viewController id="t4a-30-nau" customClass="ShowSnapsViewController" customModule="snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TqB-oU-32s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iak-sT-KCK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="488"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVw-FH-2EQ">
+                                <rect key="frame" x="16" y="592" width="343" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="yvL-nD-wJo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bVw-FH-2EQ" firstAttribute="top" secondItem="iak-sT-KCK" secondAttribute="bottom" constant="40" id="7e0-Il-1aa"/>
+                            <constraint firstItem="bVw-FH-2EQ" firstAttribute="bottom" secondItem="sUh-hw-Xtn" secondAttribute="bottom" id="KJT-Cf-brS"/>
+                            <constraint firstItem="iak-sT-KCK" firstAttribute="top" secondItem="sUh-hw-Xtn" secondAttribute="top" id="N5W-Xj-TRC"/>
+                            <constraint firstItem="bVw-FH-2EQ" firstAttribute="leading" secondItem="sUh-hw-Xtn" secondAttribute="leading" constant="16" id="t2r-sZ-odZ"/>
+                            <constraint firstItem="sUh-hw-Xtn" firstAttribute="trailing" secondItem="bVw-FH-2EQ" secondAttribute="trailing" constant="16" id="tQB-Kr-zff"/>
+                            <constraint firstItem="iak-sT-KCK" firstAttribute="leading" secondItem="sUh-hw-Xtn" secondAttribute="leading" id="vFl-ay-6mF"/>
+                            <constraint firstItem="sUh-hw-Xtn" firstAttribute="trailing" secondItem="iak-sT-KCK" secondAttribute="trailing" id="xsr-pw-L5c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sUh-hw-Xtn"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="iak-sT-KCK" id="y4q-jF-8sX"/>
+                        <outlet property="message" destination="bVw-FH-2EQ" id="o5l-ot-2I4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKB-5M-iFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="771.36431784107947"/>
         </scene>
         <!--Pick Picture View Controller-->
         <scene sceneID="5Iv-bY-IPg">
@@ -190,11 +235,40 @@
                     <connections>
                         <outlet property="imageView" destination="sjn-HM-gqT" id="0Nb-hs-yAX"/>
                         <outlet property="messageTextField" destination="bFV-QK-bPN" id="SNr-UY-yhj"/>
+                        <segue destination="IvU-Vt-vCK" kind="show" identifier="toResultSnapChats" id="PJW-5Z-egC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWD-Hd-Kjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2362" y="80"/>
+        </scene>
+        <!--Result Snaps Table View Controller-->
+        <scene sceneID="6h8-aC-i2h">
+            <objects>
+                <tableViewController id="IvU-Vt-vCK" customClass="ResultSnapsTableViewController" customModule="snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x4d-6N-8we">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="r7d-hH-5wc">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r7d-hH-5wc" id="WOL-ki-pEK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IvU-Vt-vCK" id="eN4-tR-7IW"/>
+                            <outlet property="delegate" destination="IvU-Vt-vCK" id="8Il-iL-9il"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGz-Dp-Pzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3188" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5RB-LC-R8h">

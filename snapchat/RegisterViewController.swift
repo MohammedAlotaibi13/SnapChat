@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
 
@@ -47,8 +48,10 @@ class RegisterViewController: UIViewController {
                 if error !=  nil {
                     Alert.alert("Error", (error?.localizedDescription)!, in: self)
                 }else{
-                    self.performSegue(withIdentifier: "moveToSnap", sender: nil)
-                    print("sign up successfuly")
+                    if let user = user {
+                        Database.database().reference().child("user").child(user.uid).child("email").setValue(user.email)
+                         self.performSegue(withIdentifier: "moveToSnap", sender: nil)
+                    }
                 }
             })
         } else{

@@ -9,9 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-
+// MARK:- ResultSnapsTableViewController
 class ResultSnapsTableViewController: UITableViewController {
-    
+    // MARK: Varibles
     var downloadUrl = ""
     var photoDescription = ""
     var imageName = ""
@@ -32,7 +32,7 @@ class ResultSnapsTableViewController: UITableViewController {
         }
     }
     
-    
+    // MARK: TableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return users.count
@@ -58,6 +58,8 @@ class ResultSnapsTableViewController: UITableViewController {
     
     
 }
+
+// MARK:- User
 class User {
     var email = ""
     var uid = ""

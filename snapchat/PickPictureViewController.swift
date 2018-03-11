@@ -8,30 +8,32 @@
 
 import UIKit
 import FirebaseStorage
-
+// MARK:- PickPictureViewController
 class PickPictureViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
+    //MARK: Outlet
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    //MARK: Varibles
     var imagepicker : UIImagePickerController?
     var imageAdded = false
     var imageName = "\(NSUUID().uuidString).jpg"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagepicker = UIImagePickerController()
         imagepicker?.delegate = self
     }
-
+    // MARK: Functions
     @IBAction func selectCamera(_ sender: Any) {
         if imagepicker != nil {
-        imagepicker?.sourceType = .camera
-        present(imagepicker!, animated: true, completion: nil)
+            imagepicker?.sourceType = .camera
+            present(imagepicker!, animated: true, completion: nil)
         }
     }
     @IBAction func selectFromLibrary(_ sender: Any) {
         if imagepicker != nil {
-        imagepicker?.sourceType = .photoLibrary
-        present(imagepicker!, animated: true, completion: nil)
+            imagepicker?.sourceType = .photoLibrary
+            present(imagepicker!, animated: true, completion: nil)
         }
     }
     
@@ -56,11 +58,11 @@ class PickPictureViewController: UIViewController,UIImagePickerControllerDelegat
                             Alert.alert("Error", (error?.localizedDescription)!, in: self)
                         } else{
                             if let downloadUrl = metdata?.downloadURL()?.absoluteString  {
-                           self.performSegue(withIdentifier: "toResultSnapChats", sender: downloadUrl)
+                                self.performSegue(withIdentifier: "toResultSnapChats", sender: downloadUrl)
                             }
                         }
                     })
-            }
+                }
             }
             
         } else {

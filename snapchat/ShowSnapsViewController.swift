@@ -11,11 +11,12 @@ import FirebaseDatabase
 import SDWebImage
 import FirebaseAuth
 import FirebaseStorage
-
+// MARK:- ShowSnapsViewController
 class ShowSnapsViewController: UIViewController {
-    
+    // MARK: Outlet
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    // MARK: Varibles
     var imageName = ""
     
     var snaps : DataSnapshot?
@@ -25,12 +26,12 @@ class ShowSnapsViewController: UIViewController {
             if let description = snpsDictionary["decription"] as? String {
                 if let imagUrl =   snpsDictionary["imageUrl"] as? String {
                     if let imageName = snpsDictionary["imageName"] as? String{
-                    message.text = description
-                    self.imageName = imageName
-                    if let url = URL(string: imagUrl) {
-                        imageView.sd_setImage(with: url)
+                        message.text = description
+                        self.imageName = imageName
+                        if let url = URL(string: imagUrl) {
+                            imageView.sd_setImage(with: url)
+                        }
                     }
-                }
                 }
             }
         }
@@ -38,10 +39,10 @@ class ShowSnapsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         if let cuurentUserUid = Auth.auth().currentUser?.uid {
             if let snapKey = snaps?.key {
-            Database.database().reference().child("user").child(cuurentUserUid).child("snaps").child(snapKey).removeValue()
+                Database.database().reference().child("user").child(cuurentUserUid).child("snaps").child(snapKey).removeValue()
                 Storage.storage().reference().child("images").child(imageName).delete(completion: nil)
-        }
+            }
         }
     }
-
+    
 }

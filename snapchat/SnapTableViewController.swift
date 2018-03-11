@@ -9,11 +9,11 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-
+//MARK:- SnapTableViewController
 class SnapTableViewController: UITableViewController {
     
     var snaps : [DataSnapshot] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let currentUserUid = Auth.auth().currentUser?.uid{
@@ -33,12 +33,12 @@ class SnapTableViewController: UITableViewController {
                 })
             })
         }
-
+        
     }
-
+    
     @IBAction func logOut(_ sender: Any) {
         do {
-          try Auth.auth().signOut()
+            try Auth.auth().signOut()
         } catch {
             print("problem to logout")
         }
@@ -46,18 +46,18 @@ class SnapTableViewController: UITableViewController {
         
     }
     
-
- 
-
+    
+    // MARK: TableView
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return snaps.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-         let snaps = self.snaps[indexPath.row]
+        let snaps = self.snaps[indexPath.row]
         if let userDictionary = snaps.value as? NSDictionary {
             if let fromEmail = userDictionary["from"] as? String {
                 cell.textLabel?.text = fromEmail
@@ -70,7 +70,7 @@ class SnapTableViewController: UITableViewController {
         let snaps = self.snaps[indexPath.row]
         performSegue(withIdentifier: "showSnaps", sender: snaps)
     }
- 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSnaps" {
             if let selectVc = segue.destination as? ShowSnapsViewController {

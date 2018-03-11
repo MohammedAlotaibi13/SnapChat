@@ -9,25 +9,21 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-
+// MARK:- RegisterViewController
 class RegisterViewController: UIViewController {
-
+    // MARK: Outlets
     @IBOutlet weak var signUp: UIButton!
     @IBOutlet weak var logIn: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
+    // MARK: varibale
     var signUpMode = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
     @IBAction func signUp(_ sender: Any) {
         if signUpMode{
             signUpMode = false
@@ -43,27 +39,27 @@ class RegisterViewController: UIViewController {
         if emailTextField.text == "" || passwordTextField.text == "" {
             Alert.alert("Missing", "Please Enter Your Email or Password", in: self)
         } else {
-        if signUpMode {
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
-                if error !=  nil {
-                    Alert.alert("Error", (error?.localizedDescription)!, in: self)
-                }else{
-                    if let user = user {
-                        Database.database().reference().child("user").child(user.uid).child("email").setValue(user.email)
-                         self.performSegue(withIdentifier: "moveToSnap", sender: nil)
+            if signUpMode {
+                Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+                    if error !=  nil {
+                        Alert.alert("Error", (error?.localizedDescription)!, in: self)
+                    }else{
+                        if let user = user {
+                            Database.database().reference().child("user").child(user.uid).child("email").setValue(user.email)
+                            self.performSegue(withIdentifier: "moveToSnap", sender: nil)
+                        }
                     }
-                }
-            })
-        } else{
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
-                if error != nil {
-                    Alert.alert("Error", (error?.localizedDescription)!, in: self)
-                }else {
-                    self.performSegue(withIdentifier: "moveToSnap", sender: nil)
-                    print("log in done")
-                }
-            })
-        }
+                })
+            } else{
+                Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+                    if error != nil {
+                        Alert.alert("Error", (error?.localizedDescription)!, in: self)
+                    }else {
+                        self.performSegue(withIdentifier: "moveToSnap", sender: nil)
+                        print("log in done")
+                    }
+                })
+            }
         }
         
     }
